@@ -1,35 +1,68 @@
 ---
-import Layout from '../layouts/Layout.astro';
+interface Props {
+	title: string;
+}
+
+import Slide from "../components/Slide.astro";
+import Layout from "../layouts/Layout.astro";
+import { LoremIpsum } from "lorem-ipsum";
+
+const lorem = new LoremIpsum({
+	sentencesPerParagraph: {
+		max: 4,
+		min: 2,
+	},
+	wordsPerSentence: {
+		max: 12,
+		min: 6,
+	},
+});
+
+const getRandomTitle = () => {
+	const s = lorem.generateWords(2);
+	return String(s[0]).toUpperCase() + String(s).slice(1);
+};
+
+const getRandomParagraphs = () => {
+	return Array.from({ length: Math.floor(Math.random() * 3) + 1 }, () =>
+		lorem.generateParagraphs(Math.floor(Math.random() * 2) + 1),
+	);
+};
+
+enum Directions {
+	LTR = "ltr",
+	RTL = "rtl",
+}
 ---
 
 <Layout title="My fancy page">
-	<h1>Hello!</h1>
+	<Slide
+		dir={Directions.LTR}
+		title={getRandomTitle()}
+		paragraphs={getRandomParagraphs()}
+	/>
+	<div style="height: 600px"></div>
+	<Slide
+		dir={Directions.RTL}
+		title={getRandomTitle()}
+		paragraphs={getRandomParagraphs()}
+	/>
+	<div style="height: 600px"></div>
+	<Slide
+		dir={Directions.LTR}
+		title={getRandomTitle()}
+		paragraphs={getRandomParagraphs()}
+	/>
+	<div style="height: 600px"></div>
+	<Slide
+		dir={Directions.RTL}
+		title={getRandomTitle()}
+		paragraphs={getRandomParagraphs()}
+	/>
+	<div style="height: 600px"></div>
+	<Slide
+		dir={Directions.LTR}
+		title={getRandomTitle()}
+		paragraphs={getRandomParagraphs()}
+	/>
 </Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-</style>

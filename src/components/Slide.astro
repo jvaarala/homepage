@@ -1,0 +1,79 @@
+---
+const { dir, title, paragraphs } = Astro.props;
+---
+
+<div class="slide" dir={dir}>
+    <h1>{title}</h1>
+    {paragraphs.map((paragraph: string) => <p>{paragraph}</p>)}
+</div>
+
+<script>
+    // Add the 'loaded' class to the body when the page has finished loading
+    window.onload = function () {
+        document.body.classList.add("loaded");
+    };
+</script>
+
+<style>
+    .slide {
+        background: lightslategrey;
+        width: 100%;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    /* Styles for left-to-right (ltr) direction */
+    .slide[dir="ltr"] {
+        text-align: left;
+        direction: ltr;
+        left: -200%; /* Start off-screen to the left */
+        transition: left 2s ease-in-out;
+    }
+
+    .slide[dir="ltr"] h1,
+    .slide[dir="ltr"] p {
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    body.loaded .slide[dir="ltr"] {
+        left: -33%;
+    }
+
+    /* Styles for right-to-left (rtl) direction */
+    .slide[dir="rtl"] {
+        text-align: left;
+        direction: rtl;
+        right: -200%; /* Start off-screen to the right */
+        transition: right 2s ease-in-out;
+    }
+
+    .slide[dir="rtl"] h1,
+    .slide[dir="rtl"] p {
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    body.loaded .slide[dir="rtl"] {
+        right: -33%;
+    }
+
+    h1 {
+        margin: 0;
+        padding: 1rem;
+        word-wrap: break-word;
+        white-space: normal;
+        width: 50%;
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+    p {
+        margin: 0;
+        padding: 1rem;
+        width: 50%;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1;
+    }
+</style>
