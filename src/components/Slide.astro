@@ -1,4 +1,5 @@
 ---
+import "../styles/global.css";
 const { dir, title, paragraphs } = Astro.props;
 ---
 
@@ -33,15 +34,15 @@ const { dir, title, paragraphs } = Astro.props;
 
 <style>
     .slide {
-        background: rgb(183, 178, 173);
+        background: var(--ash-gray);
         width: 100%;
         border-radius: 10px;
         position: relative;
         opacity: 0;
-        box-shadow: 15px 11px 0 lightslategrey;
+        box-shadow: 15px 11px 0 var(--naples-yellow);
         transition:
-            opacity 1s ease,
-            transform 0.66s ease;
+            opacity 0.33s ease,
+            transform 0.5s ease;
     }
 
     /* Styles for left-to-right (ltr) direction */

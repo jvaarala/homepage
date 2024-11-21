@@ -1,0 +1,8 @@
+	:root {
+		/* CSS HSL */
+		--dark-purple: hsla(261, 54%, 10%, 1);
+		--naples-yellow: hsla(44, 81%, 67%, 1);
+		--honeydew: hsla(141, 30%, 91%, 1);
+		--ash-gray: hsla(153, 6%, 70%, 1);
+		--rich-black: hsla(226, 100%, 3%, 1);
+	}

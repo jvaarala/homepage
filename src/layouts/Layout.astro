@@ -1,4 +1,5 @@
 ---
+import "../styles/global.css";
 const { title } = Astro.props;
 ---
 
@@ -19,7 +20,12 @@ const { title } = Astro.props;
 <style is:global>
 	html {
 		font-family: system-ui, sans-serif;
-		background: #13151a;
+		color: var(--rich-black);
+		background: radial-gradient(
+			circle,
+			var(--rich-black),
+			var(--dark-purple)
+		);
 	}
 
 	html,
